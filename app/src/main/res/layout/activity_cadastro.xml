@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/layoutTela">
+
+    <TextView
+        android:id="@+id/lblNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_nome"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/edtNomeArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnSalvarPonto"
+        style="@style/btnLargo"
+        android:text="@string/salvar_ponto" />
+
+    <Button
+        android:id="@+id/btnFinalizar"
+        style="@style/btnLargo"
+        android:text="@string/finalizar" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        style="@style/btnLargo"
+        android:text="@string/salvar"
+        android:visibility="gone" />
+
+</LinearLayout>

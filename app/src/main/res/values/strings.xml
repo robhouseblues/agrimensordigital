@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Agrimensor Digital</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="salvar_ponto">Salvar ponto</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="lbl_nome">Nome:</string>
+    <string name="salvar">Salvar</string>
+</resources>
