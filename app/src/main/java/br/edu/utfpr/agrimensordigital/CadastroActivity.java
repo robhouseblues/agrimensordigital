@@ -1,4 +1,4 @@
-package br.edu.utfpr.agrimensordigital;
+﻿package br.edu.utfpr.agrimensordigital;
 
 import android.Manifest;
 import android.content.Context;
@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
