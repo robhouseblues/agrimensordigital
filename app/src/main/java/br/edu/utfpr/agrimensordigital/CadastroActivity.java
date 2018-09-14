@@ -1,4 +1,4 @@
-package br.edu.utfpr.agrimensordigital;
+﻿package br.edu.utfpr.agrimensordigital;
 
 import android.Manifest;
 import android.content.Context;
