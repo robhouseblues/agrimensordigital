@@ -1,8 +1,10 @@
 package br.edu.utfpr.agrimensordigital;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 
 import br.com.rafael.jpdroid.core.Jpdroid;
@@ -24,5 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Click(R.id.btnCadastrar)
+    void clickSalvarPonto() {
+        Intent it = new Intent(this, CadastroActivity_.class);
+        startActivity(it);
+    }
 
 }

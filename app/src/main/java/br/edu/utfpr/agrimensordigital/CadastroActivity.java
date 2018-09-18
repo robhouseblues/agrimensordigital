@@ -1,4 +1,4 @@
-﻿package br.edu.utfpr.agrimensordigital;
+package br.edu.utfpr.agrimensordigital;
 
 import android.Manifest;
 import android.content.Context;
@@ -75,6 +75,10 @@ public class CadastroActivity extends AppCompatActivity implements LocationListe
         if (!locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
+
+        latitude = 0D;
+        longitude = 0D;
+        pontos = null;
     }
 
     @Click(R.id.btnSalvarPonto)
