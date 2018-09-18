@@ -31,9 +31,10 @@ import br.com.rafael.jpdroid.core.Jpdroid;
 import br.com.rafael.jpdroid.exceptions.JpdroidException;
 import br.edu.utfpr.agrimensordigital.model.Area;
 import br.edu.utfpr.agrimensordigital.model.Ponto;
+import br.edu.utfpr.agrimensordigital.util.GPSUtil;
 
 @EActivity(R.layout.activity_cadastro)
-public class CadastroActivity extends AppCompatActivity implements LocationListener {
+public class CadastroActivity extends AppCompatActivity {
 
     @ViewById
     TextView lblNome;
@@ -50,37 +51,14 @@ public class CadastroActivity extends AppCompatActivity implements LocationListe
     @ViewById
     Button btnFinalizar;
 
-    private Double latitude;
-    private Double longitude;
     private List<Ponto> pontos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, this);
-
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
-        if (!locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-        }
-
-        latitude = 0D;
-        longitude = 0D;
         pontos = null;
     }
 
@@ -88,14 +66,18 @@ public class CadastroActivity extends AppCompatActivity implements LocationListe
     void clickSalvarPonto() {
         Ponto ponto = new Ponto();
 
-        ponto.setLatitude(latitude);
-        ponto.setLongitude(longitude);
+        if (pontos == null) {
+            pontos = new ArrayList<>();
+        }
+
+        GPSUtil gpsUtil = new GPSUtil(this);
+
+        ponto.setLatitude(gpsUtil.getLatitude());
+        ponto.setLongitude(gpsUtil.getLongitude());
 
         pontos.add(ponto);
 
-        Toast.makeText(this, "Salvou o ponto.", Toast.LENGTH_LONG).show();
-
-
+        Toast.makeText(this, "Ponto salvo.", Toast.LENGTH_LONG).show();
     }
 
     @Click(R.id.btnFinalizar)
@@ -124,38 +106,18 @@ public class CadastroActivity extends AppCompatActivity implements LocationListe
 
         area.setPerimetro(SphericalUtil.computeLength(listaLatLng));
 
-        for (Ponto p : pontos) {
-            p.setArea(area);
-        }
+//        for (Ponto p : pontos) {
+//            p.setArea(area);
+//        }
 
         Jpdroid dataBase = Jpdroid.getInstance();
 
         try {
             dataBase.persist(area);
-            Toast.makeText(this, "Salvou a área.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Área salva.", Toast.LENGTH_LONG).show();
         } catch (JpdroidException e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void onLocationChanged(Location location) {
-        latitude = location.getLatitude() / 1000000;
-        longitude = location.getLongitude() / 1000000;
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
 }
