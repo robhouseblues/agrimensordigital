@@ -17,11 +17,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.SphericalUtil;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rafael.jpdroid.core.Jpdroid;
@@ -91,6 +94,8 @@ public class CadastroActivity extends AppCompatActivity implements LocationListe
         pontos.add(ponto);
 
         Toast.makeText(this, "Salvou o ponto.", Toast.LENGTH_LONG).show();
+
+
     }
 
     @Click(R.id.btnFinalizar)
@@ -107,6 +112,17 @@ public class CadastroActivity extends AppCompatActivity implements LocationListe
         Area area = new Area();
         area.setNome(edtNomeArea.getText().toString());
         area.setPontos(pontos);
+
+        List<LatLng> listaLatLng = new ArrayList<>();
+
+        for (Ponto p : pontos) {
+            LatLng latLng = new LatLng(p.getLatitude(), p.getLongitude());
+            listaLatLng.add(latLng);
+        }
+
+        area.setArea(SphericalUtil.computeArea(listaLatLng));
+
+        area.setPerimetro(SphericalUtil.computeLength(listaLatLng));
 
         for (Ponto p : pontos) {
             p.setArea(area);
