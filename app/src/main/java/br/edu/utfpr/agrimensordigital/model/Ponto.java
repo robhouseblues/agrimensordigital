@@ -1,33 +1,23 @@
 package br.edu.utfpr.agrimensordigital.model;
 
-import br.com.rafael.jpdroid.annotations.Column;
-import br.com.rafael.jpdroid.annotations.Entity;
-import br.com.rafael.jpdroid.annotations.PrimaryKey;
-import br.com.rafael.jpdroid.annotations.RelationClass;
-import br.com.rafael.jpdroid.enums.RelationType;
+import java.io.Serializable;
 
-@Entity
-public class Ponto {
+public class Ponto implements Serializable {
 
-    @PrimaryKey
-    @Column
-    private Long _id;
+    private Integer id;
 
-    @Column
     private Double latitude;
 
-    @Column
     private Double longitude;
 
-    @RelationClass(relationType = RelationType.OneToMany, joinColumn = "_id")
-    private Area area;
+    private Integer idArea;
 
-    public Long get_id() {
-        return _id;
+    public Integer getId() {
+        return id;
     }
 
-    public void set_id(Long _id) {
-        this._id = _id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Double getLatitude() {
@@ -46,11 +36,12 @@ public class Ponto {
         this.longitude = longitude;
     }
 
-    public Area getArea() {
-        return area;
+    public Integer getIdArea() {
+        return idArea;
     }
 
-    public void setArea(Area area) {
-        this.area = area;
+    public void setIdArea(Integer idArea) {
+        this.idArea = idArea;
     }
+
 }

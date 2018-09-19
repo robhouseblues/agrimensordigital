@@ -1,38 +1,28 @@
 package br.edu.utfpr.agrimensordigital.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-import br.com.rafael.jpdroid.annotations.Column;
-import br.com.rafael.jpdroid.annotations.Entity;
-import br.com.rafael.jpdroid.annotations.PrimaryKey;
-import br.com.rafael.jpdroid.annotations.RelationClass;
-import br.com.rafael.jpdroid.enums.RelationType;
+public class Area implements Serializable {
 
-@Entity
-public class Area {
+    private Integer id;
 
-    @PrimaryKey
-    @Column
-    private Long _id;
-
-    @Column
     private String nome;
 
-    @Column
     private Double perimetro;
 
-    @Column
     private Double area;
 
-    @RelationClass(relationType = RelationType.ManyToOne, joinColumn = "area")
+    private String imagem;
+
     private List<Ponto> pontos;
 
-    public Long get_id() {
-        return _id;
+    public Integer getId() {
+        return id;
     }
 
-    public void set_id(Long _id) {
-        this._id = _id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -57,6 +47,14 @@ public class Area {
 
     public void setArea(Double area) {
         this.area = area;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public List<Ponto> getPontos() {

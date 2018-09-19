@@ -23,14 +23,33 @@
         <item name="android:padding">5dp</item>
     </style>
 
-    <style name="btnPequeno">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+    <style name="edit">
+        <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textCursorDrawable">@null</item>
         <item name="android:textSize">13sp</item>
-        <item name="android:background">@drawable/btn_padrao</item>
-        <item name="android:layout_margin">5dp</item>
-        <item name="android:paddingLeft">15dp</item>
-        <item name="android:paddingRight">15dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/back_black</item>
+    </style>
+
+    <style name="editDisable">
+        <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:enabled">false</item>
+        <item name="android:editable">false</item>
+        <item name="android:focusable">true</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/back_black</item>
     </style>
 
     <style name="btnLargo">
@@ -39,12 +58,6 @@
         <item name="android:textSize">13sp</item>
         <item name="android:background">@drawable/btn_padrao</item>
         <item name="android:layout_margin">5dp</item>
-    </style>
-
-    <style name="radioButton">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">13sp</item>
     </style>
 
 </resources>

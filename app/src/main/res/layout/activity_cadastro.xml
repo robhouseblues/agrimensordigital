@@ -7,68 +7,98 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/lblPerimetro"
+        <LinearLayout
+            android:id="@+id/nomeArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lbl_perimetro"
-            android:visibility="gone" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/lblValorPerimetro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
+            <TextView
+                style="@style/label"
+                android:labelFor="@id/edtNome"
+                android:text="@string/lbl_nome" />
 
-        <TextView
-            android:id="@+id/lblArea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_area"
-            android:visibility="gone" />
+            <EditText
+                android:id="@+id/edtNome"
+                style="@style/edit"
+                android:inputType="text" />
 
-        <TextView
-            android:id="@+id/lblValorArea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/lblNome"
+        <LinearLayout
+            android:id="@+id/dadosArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lbl_nome"
-            android:visibility="gone" />
+            android:baselineAligned="false">
 
-        <EditText
-            android:id="@+id/edtNomeArea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/label"
+                    android:labelFor="@id/edtPerimetro"
+                    android:text="@string/lbl_perimetro" />
+
+                <EditText
+                    android:id="@+id/edtPerimetro"
+                    style="@style/editDisable"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/label"
+                    android:labelFor="@id/edtArea"
+                    android:text="@string/lbl_area" />
+
+                <EditText
+                    android:id="@+id/edtArea"
+                    style="@style/editDisable"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <ImageView
+            android:id="@+id/imgMapa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ivMap"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnSalvarPonto"
+            style="@style/btnLargo"
+            android:layout_weight="1"
+            android:text="@string/salvar_ponto" />
+
+        <Button
+            android:id="@+id/btnFinalizar"
+            style="@style/btnLargo"
+            android:layout_weight="1"
+            android:text="@string/finalizar" />
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btnSalvarPonto"
+        android:id="@+id/btnSalvarArea"
         style="@style/btnLargo"
-        android:text="@string/salvar_ponto" />
-
-    <Button
-        android:id="@+id/btnFinalizar"
-        style="@style/btnLargo"
-        android:text="@string/finalizar" />
-
-    <Button
-        android:id="@+id/btnSalvar"
-        style="@style/btnLargo"
-        android:text="@string/salvar"
-        android:visibility="gone" />
+        android:text="@string/salvar_area" />
 
 </LinearLayout>

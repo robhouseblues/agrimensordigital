@@ -4,7 +4,9 @@
     <string name="salvar_ponto">Salvar ponto</string>
     <string name="finalizar">Finalizar</string>
     <string name="lbl_nome">Nome:</string>
-    <string name="lbl_area">Àrea:</string>
+    <string name="lbl_area">Área:</string>
     <string name="lbl_perimetro">Perímetro:</string>
-    <string name="salvar">Salvar</string>
+    <string name="salvar_area">Salvar área</string>
+    <string name="nao_ha_registros">Não há registros.</string>
+    <string name="cadastro_de_area">Cadastro de área</string>
 </resources>
