@@ -31,7 +31,7 @@ public class GPSUtil implements LocationListener {
         LocationManager locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
 
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            context.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            //context.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
 
 
