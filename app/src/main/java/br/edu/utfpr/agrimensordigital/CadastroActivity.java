@@ -103,6 +103,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     @Click(R.id.btnFinalizar)
     void clickFinalizar() {
+        //ao finalizar ele realiza o processo da geração da foto, depois atualiza os componentes em tela.
         new ConexaoThread().start();
     }
 
@@ -127,8 +128,8 @@ public class CadastroActivity extends AppCompatActivity {
         @Override
         public void run() {
             try {
-                //String pic = "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x400&path=" + concatPontos();
-                String pic = "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x400&path=" + concatPontos2();
+                String pic = "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x400&path=" + concatPontos();
+                //String pic = "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x400&path=" + concatPontosTeste();
 
                 URL url = new URL(pic);
                 URLConnection con = url.openConnection();
@@ -154,20 +155,21 @@ public class CadastroActivity extends AppCompatActivity {
 
                         List<LatLng> listaLatLng = new ArrayList<>();
 
-//        for (Ponto p : pontos) {
-//            LatLng latLng = new LatLng(p.getLatitude(), p.getLongitude());
-//            listaLatLng.add(latLng);
-//        }
+                        for (Ponto p : pontos) {
+                            LatLng latLng = new LatLng(p.getLatitude(), p.getLongitude());
+                            listaLatLng.add(latLng);
+                        }
 
-                        LatLng latLng = null;
-                        latLng = new  LatLng(40.737102, -73.990318);
-                        listaLatLng.add(latLng);
-                        latLng = new  LatLng(40.749825, -73.987963);
-                        listaLatLng.add(latLng);
-                        latLng = new  LatLng(40.752946, -73.987384);
-                        listaLatLng.add(latLng);
-                        latLng = new  LatLng(40.755823, -73.986397);
-                        listaLatLng.add(latLng);
+                        //Pontos teste
+//                        LatLng latLng = null;
+//                        latLng = new  LatLng(40.737102, -73.990318);
+//                        listaLatLng.add(latLng);
+//                        latLng = new  LatLng(40.749825, -73.987963);
+//                        listaLatLng.add(latLng);
+//                        latLng = new  LatLng(40.752946, -73.987384);
+//                        listaLatLng.add(latLng);
+//                        latLng = new  LatLng(40.755823, -73.986397);
+//                        listaLatLng.add(latLng);
 
                         lblValorPerimetro.setText(String.valueOf(SphericalUtil.computeLength(listaLatLng)));
                         lblValorArea.setText(String.valueOf(SphericalUtil.computeArea(listaLatLng)));
@@ -191,7 +193,7 @@ public class CadastroActivity extends AppCompatActivity {
         return str;
     }
 
-    String concatPontos2() {
+    String concatPontosTeste() {
         String str = "";
         List<LatLng> listaLatLng = new ArrayList<>();
         LatLng latLng = null;
