@@ -74,47 +74,54 @@
             android:id="@+id/imgMapa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/salvarZoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:baselineAligned="false">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/salvarTipoMapa"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/lbl_zoom"/>
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-        <Spinner
-            android:id="@+id/spnZoom"
-            android:layout_width="wrap_content"
+            <TextView
+                style="@style/label"
+                android:text="@string/lbl_tipo_mapa" />
+
+            <Spinner
+                android:id="@+id/spnTipoMapa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/tipo_mapa" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/salvarZoom"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:entries="@array/zoom" />
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-    </LinearLayout>
+            <TextView
+                style="@style/label"
+                android:text="@string/lbl_zoom" />
 
-    <LinearLayout
-        android:id="@+id/salvarTipoMapa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
+            <Spinner
+                android:id="@+id/spnZoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/zoom" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_tipo_mapa"/>
-
-        <Spinner
-            android:id="@+id/spnTipoMapa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/tipoMapa" />
+        </LinearLayout>
 
     </LinearLayout>
 

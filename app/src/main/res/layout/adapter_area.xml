@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/layoutAdapter">
+
+    <ImageView
+        android:id="@+id/imgArea"
+        style="imgAdapter" />
+
+    <TextView
+        android:id="@+id/txtNomeArea"
+        style="@style/label"
+        android:layout_marginStart="5dp" />
+
+</LinearLayout>

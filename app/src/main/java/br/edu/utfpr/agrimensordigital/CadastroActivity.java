@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.SphericalUtil;
 
@@ -32,7 +30,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,8 +89,6 @@ public class CadastroActivity extends AppCompatActivity {
 
     private List<Ponto> pontos;
 
-    //private DecimalFormat df = new DecimalFormat("###,###.00");
-
     private static final String PREF_NAME = "pref";
 
     @Override
@@ -102,7 +97,6 @@ public class CadastroActivity extends AppCompatActivity {
         setTitle(getString(R.string.cadastro_de_area));
         tipoMapa = getTipoMapa();
         zoom = getZoom();
-
     }
 
     @AfterViews
@@ -217,8 +211,8 @@ public class CadastroActivity extends AppCompatActivity {
                 } else if (zoom == 3) {
                     tZoom = "zoom=5";
                 }
-                //String pic = "http://maps.googleapis.com/maps/api/staticmap?" + tZoom + tMap + "&size=600x600" + concatPontos();
-                String pic = "http://maps.googleapis.com/maps/api/staticmap?" + tZoom + tMap + "&size=600x600" + concatPontosTeste();
+                String pic = "http://maps.googleapis.com/maps/api/staticmap?" + tZoom + tMap + "&size=600x600" + concatPontos();
+                //String pic = "http://maps.googleapis.com/maps/api/staticmap?" + tZoom + tMap + "&size=600x600" + concatPontosTeste();
 
                 URL url = new URL(pic);
                 URLConnection con = url.openConnection();
@@ -243,19 +237,20 @@ public class CadastroActivity extends AppCompatActivity {
         String str = "";
         Integer i = 0;
         for (Ponto p : pontos) {
-            i ++;
+            i++;
             //if (str.equals((""))) {
-                str += "&markers=color:blue%7Clabel:" + i +"%7C";
+            str += "&markers=color:blue%7Clabel:" + i + "%7C";
             //}
             //if (str.equals((""))) {
-                //str += ",";
+            //str += ",";
             //}
-            str += p.getLatitude().toString() ;
+            str += p.getLatitude().toString();
             str += "," + p.getLongitude().toString();
         }
         return str;
     }
-//7C62.107733,-145.5419367Ccolor:green%
+
+    //7C62.107733,-145.5419367Ccolor:green%
     String concatPontosTeste() {
         String str = "";
         Integer i = 0;
@@ -269,10 +264,11 @@ public class CadastroActivity extends AppCompatActivity {
         listaLatLng.add(latLng);
         latLng = new LatLng(40.755823, -73.986397);
         listaLatLng.add(latLng);
+
         for (LatLng p : listaLatLng) {
-            i ++;
+            i++;
             //if (str.equals((""))) {
-            str += "&markers=color:blue%7Clabel:" + i +"%7C";
+            str += "&markers=color:blue%7Clabel:" + i + "%7C";
             //}
             //if (str.equals((""))) {
             //str += ",";
@@ -280,12 +276,13 @@ public class CadastroActivity extends AppCompatActivity {
             str += p.latitude;
             str += "," + p.longitude;
         }
+
         return str;
     }
 
     private void ativarCadastroPontos() {
-        salvarZoom.setVisibility(View.VISIBLE);
-        salvarTipoMapa.setVisibility(View.VISIBLE);
+        salvarZoom.setVisibility(View.GONE);
+        salvarTipoMapa.setVisibility(View.GONE);
         nomeArea.setVisibility(View.GONE);
         dadosArea.setVisibility(View.GONE);
         imgMapa.setVisibility(View.GONE);
@@ -297,8 +294,8 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private void ativarCadastroArea() {
-        salvarZoom.setVisibility(View.GONE);
-        salvarTipoMapa.setVisibility(View.GONE);
+        salvarZoom.setVisibility(View.VISIBLE);
+        salvarTipoMapa.setVisibility(View.VISIBLE);
         edtNome.setEnabled(true);
         nomeArea.setVisibility(View.VISIBLE);
         dadosArea.setVisibility(View.VISIBLE);
@@ -367,7 +364,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     public int getZoom() {
         SharedPreferences setting = this.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        int valor = setting.getInt("zoom", 14);
+        int valor = setting.getInt("zoom", 0);
         return valor;
     }
 
@@ -390,4 +387,5 @@ public class CadastroActivity extends AppCompatActivity {
         editor.putInt("tipo", valor);
         editor.commit();
     }
+
 }

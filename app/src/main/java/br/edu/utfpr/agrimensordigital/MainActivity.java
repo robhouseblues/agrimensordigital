@@ -3,7 +3,6 @@ package br.edu.utfpr.agrimensordigital;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.androidannotations.annotations.AfterViews;
@@ -13,6 +12,7 @@ import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
+import br.edu.utfpr.agrimensordigital.adapter.AreaAdapter;
 import br.edu.utfpr.agrimensordigital.model.Area;
 import br.edu.utfpr.agrimensordigital.service.AreaService;
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     @AfterViews
     void init() {
-        lista.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new AreaService(this).listar()));
+        lista.setAdapter(new AreaAdapter(this, new AreaService(this).listar()));
     }
 
     @OptionsItem(R.id.mnuCadastrar)

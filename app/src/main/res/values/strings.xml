@@ -9,17 +9,9 @@
     <string name="salvar_area">Salvar área</string>
     <string name="nao_ha_registros">Não há registros.</string>
     <string name="cadastro_de_area">Cadastro de área</string>
-    <string-array name="tipoMapa">
-        <item>Híbrido</item>
-        <item>Satélite</item>
-        <item>Terreno</item>
-    </string-array>
-    <string name="lbl_tipo_mapa">Tipo Mapa:</string>
-    <string-array name="zoom">
-        <item>20</item>
-        <item>15</item>
-        <item>10</item>
-        <item>5</item>
-    </string-array>
+
+
+    <string name="lbl_tipo_mapa">Tipo do mapa:</string>
+
     <string name="lbl_zoom">Zoom:</string>
 </resources>
