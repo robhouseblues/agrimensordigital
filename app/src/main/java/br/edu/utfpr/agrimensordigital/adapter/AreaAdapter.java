@@ -66,7 +66,7 @@ public class AreaAdapter extends BaseAdapter {
         if (area.getImagem() != null) {
             byte[] byteArray = Base64.decode(area.getImagem(), 0);
             Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-            holder.img.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 50, 50, false));
+            holder.img.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 100, 100, false));
         }
 
         holder.nome.setText(area.getNome());

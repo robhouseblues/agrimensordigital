@@ -4,6 +4,7 @@
         <item>Híbrido</item>
         <item>Satélite</item>
         <item>Terreno</item>
+        <item>Rodovias</item>
     </string-array>
 
     <string-array name="zoom">

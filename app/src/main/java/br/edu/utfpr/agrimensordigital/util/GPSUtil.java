@@ -37,7 +37,7 @@ public class GPSUtil implements LocationListener {
         boolean isNetworkEnabled = locationManager.isProviderEnabled(NETWORK_PROVIDER);
 
         if (!isGPSEnabled) {
-            context.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            //context.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
 
         if (isGPSEnabled || isNetworkEnabled) {

@@ -23,6 +23,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.ItemSelect;
 import org.androidannotations.annotations.ViewById;
 
@@ -180,12 +181,14 @@ public class CadastroActivity extends AppCompatActivity {
     public void spnZoomItemSelected(boolean selected, int position) {
         zoom = position;
         setZoom(position);
+        new ConexaoThread().start();
     }
 
     @ItemSelect(R.id.spnTipoMapa)
     public void spnTipoMapaItemSelected(boolean selected, int position) {
         tipoMapa = position;
-        setZoom(position);
+        setTipoMapa(position);
+        new ConexaoThread().start();
     }
 
     class ConexaoThread extends Thread {
@@ -195,23 +198,25 @@ public class CadastroActivity extends AppCompatActivity {
                 //Trata o tipo de mapa conforme valor do spinner;
                 String tMap = "";
                 if (tipoMapa == 0) {//GoogleMap.MAP_TYPE_HYBRID
-                    tMap += "&maptype=hybrid&";
+                    tMap += "maptype=hybrid&";
                 } else if (tipoMapa == 1) {//GoogleMap.MAP_TYPE_SATTELITE
-                    tMap += "&maptype=satellite&";
+                    tMap += "maptype=satellite&";
                 } else if (tipoMapa == 2) {//GoogleMap.MAP_TYPE_TERRAIN
-                    tMap += "&maptype=terrain&";
+                    tMap += "maptype=terrain&";
+                } else if (tipoMapa == 3) {//GoogleMap.MAP_TYPE_ROADMAP
+                    tMap += "maptype=roadmap&";
                 }
                 String tZoom = "";
                 if (zoom == 0) {
-                    tZoom = "zoom=20";
+                    tZoom = "zoom=20&";
                 } else if (zoom == 1) {
-                    tZoom = "zoom=15";
+                    tZoom = "zoom=15&";
                 } else if (zoom == 2) {
-                    tZoom = "zoom=10";
+                    tZoom = "zoom=10&";
                 } else if (zoom == 3) {
-                    tZoom = "zoom=5";
+                    tZoom = "zoom=5&";
                 }
-                String pic = "http://maps.googleapis.com/maps/api/staticmap?" + tZoom + tMap + "&size=600x600" + concatPontos();
+                String pic = "http://maps.googleapis.com/maps/api/staticmap?" + tZoom + tMap + "size=600x600" + concatPontos();
                 //String pic = "http://maps.googleapis.com/maps/api/staticmap?" + tZoom + tMap + "&size=600x600" + concatPontosTeste();
 
                 URL url = new URL(pic);
@@ -227,6 +232,7 @@ public class CadastroActivity extends AppCompatActivity {
                         imgMapa.setImageBitmap(bmp);
                     }
                 });
+                con = null;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -238,45 +244,10 @@ public class CadastroActivity extends AppCompatActivity {
         Integer i = 0;
         for (Ponto p : pontos) {
             i++;
-            //if (str.equals((""))) {
             str += "&markers=color:blue%7Clabel:" + i + "%7C";
-            //}
-            //if (str.equals((""))) {
-            //str += ",";
-            //}
             str += p.getLatitude().toString();
             str += "," + p.getLongitude().toString();
         }
-        return str;
-    }
-
-    //7C62.107733,-145.5419367Ccolor:green%
-    String concatPontosTeste() {
-        String str = "";
-        Integer i = 0;
-        List<LatLng> listaLatLng = new ArrayList<>();
-        LatLng latLng = null;
-        latLng = new LatLng(40.737102, -73.990318);
-        listaLatLng.add(latLng);
-        latLng = new LatLng(40.749825, -73.987963);
-        listaLatLng.add(latLng);
-        latLng = new LatLng(40.752946, -73.987384);
-        listaLatLng.add(latLng);
-        latLng = new LatLng(40.755823, -73.986397);
-        listaLatLng.add(latLng);
-
-        for (LatLng p : listaLatLng) {
-            i++;
-            //if (str.equals((""))) {
-            str += "&markers=color:blue%7Clabel:" + i + "%7C";
-            //}
-            //if (str.equals((""))) {
-            //str += ",";
-            //}
-            str += p.latitude;
-            str += "," + p.longitude;
-        }
-
         return str;
     }
 
