@@ -79,6 +79,46 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/salvarZoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_zoom"/>
+
+        <Spinner
+            android:id="@+id/spnZoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/zoom" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/salvarTipoMapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_tipo_mapa"/>
+
+        <Spinner
+            android:id="@+id/spnTipoMapa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/tipoMapa" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

@@ -29,8 +29,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS pontos (id INTEGER PRIMARY KEY AUTOINCREMENT, latitude REAL, longitude REAL, idarea INTEGER)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS areas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, perimetro REAL, id_area REAL, imagem TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS pontos (id INTEGER PRIMARY KEY AUTOINCREMENT, latitude REAL, longitude REAL, id_area INTEGER)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS areas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, perimetro REAL, area REAL, imagem TEXT)");
     }
 
     @Override
